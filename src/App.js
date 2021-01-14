@@ -14,7 +14,7 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${api.key}/`)
+      fetch(`api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${api.key}/`)
         .then(response => response.json())
         .then(result => {
           setWeather(result);
