@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const api = {
   key: "a75becd4db093ab45913a64ed0d957fd",
+  base: "http://api.openweathermap.org/data/2.5/"
 }
 
 
@@ -14,8 +15,8 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${api.key}/`)
-        .then(response => response.json())
+      fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
+        .then(res => res.json())
         .then(result => {
           setWeather(result);
         });
@@ -41,7 +42,7 @@ function App() {
           <input 
             type="text"
             className="search-bar"
-            placeholder="Search..."
+            placeholder="Search City Name"
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
